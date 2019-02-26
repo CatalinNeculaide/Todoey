@@ -12,8 +12,6 @@ class ToDoListViewController: UITableViewController {
     
     var itemArray = [Item]()
     
-    let arrayKey: String = "TodoListArray"
-    
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     override func viewDidLoad() {
@@ -88,8 +86,8 @@ class ToDoListViewController: UITableViewController {
     }
     
     func saveItems() {
-        let encoder = PropertyListEncoder()
         
+        let encoder = PropertyListEncoder()
         do {
             
             let data = try encoder.encode(itemArray)
@@ -100,6 +98,7 @@ class ToDoListViewController: UITableViewController {
         }
         
         tableView.reloadData()
+        
     }
     
     func loadItems() {
@@ -115,6 +114,7 @@ class ToDoListViewController: UITableViewController {
                 print("Error in loading data \(error)")
             }
         }
+        
     }
     
 }
